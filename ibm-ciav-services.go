@@ -174,6 +174,7 @@ func (t *ServicesChaincode) updateCIAV(stub *shim.ChaincodeStub, args []string) 
 	UpdateKYC(stub, []string{customer_id, kyc_status, last_updated, source})
 	UpdateAddress(stub, []string{customer_id, address_id, address_type, door_number, street, locality, city, state, pincode, poa_type, poa_doc, poa_expiry_date, source})
 
+
 	if args[28] != "" {
 		UpdateIdentification(stub, []string{customer_id, identity_number2, poi_type2, poi_doc2, poi_expiry_date2, source})
 	}
@@ -191,7 +192,7 @@ func (t *ServicesChaincode) Invoke(stub *shim.ChaincodeStub, function string, ar
 	if function == "addCIAV" {
 		// add customer
 		return t.addCIAV(stub, args)
-	} else if function == "updateCIAV" {
+	} else function == "updateCIAV" {
 		// update customer
 		return t.updateCIAV(stub, args)
 	}
