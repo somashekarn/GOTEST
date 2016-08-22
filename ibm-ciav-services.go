@@ -192,7 +192,7 @@ func (t *ServicesChaincode) Invoke(stub *shim.ChaincodeStub, function string, ar
 	if function == "addCIAV" {
 		// add customer
 		return t.addCIAV(stub, args)
-	} else function == "updateCIAV" {
+	} else {
 		// update customer
 		return t.updateCIAV(stub, args)
 	}
