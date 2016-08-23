@@ -371,7 +371,7 @@ func UpdateAddress(stub *shim.ChaincodeStub, args []string) ([]byte, error) {
   expiryDate := args[11]
   source := args[12]
 
-	ok, err := stub.DeleteRow("Address", shim.Row{
+	stub.DeleteRow("Address", shim.Row{
 	Columns: []*shim.Column{
 		&shim.Column{Value: &shim.Column_String_{String_: customerId}},
 		&shim.Column{Value: &shim.Column_String_{String_: addressId}},
@@ -389,7 +389,7 @@ func UpdateAddress(stub *shim.ChaincodeStub, args []string) ([]byte, error) {
 	},
 })
 
-ok, err = stub.InsertRow("Address", shim.Row{
+ok, err := stub.InsertRow("Address", shim.Row{
 	Columns: []*shim.Column{
 		&shim.Column{Value: &shim.Column_String_{String_: customerId}},
 		&shim.Column{Value: &shim.Column_String_{String_: addressId}},
