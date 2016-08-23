@@ -347,78 +347,50 @@ func AddAddress(stub *shim.ChaincodeStub, args []string) ([]byte, error) {
 	return nil, err
 }
 
-/*
-	Update address record
-*/
 func UpdateAddress(stub *shim.ChaincodeStub, args []string) ([]byte, error) {
 	// myLogger.Debug("Updating address record ...")
 
-	if len(args) != 11 {
+	if len(args) != 13 {
 		return nil, errors.New("Incorrect number of arguments. Expecting 11")
 	}
 
   customerId := args[0]
-  // addressId := args[1]
-  // addressType := args[2]
-  // doorNumber := args[3]
-  // street := args[4]
-  // locality := args[5]
-  // city := args[6]
-  // state := args[7]
-  // pincode := args[8]
-  // poaType := args[9]
-  // poaDoc := args[10]
-  // expiryDate := args[11]
-  // source := args[12]
-  //  stub.
-	// ok, err := stub.ReplaceRow("Address", shim.Row{
-	// 	Columns: []*shim.Column{
-  //     &shim.Column{Value: &shim.Column_String_{String_: customerId}},
-  //     &shim.Column{Value: &shim.Column_String_{String_: addressId}},
-  //     &shim.Column{Value: &shim.Column_String_{String_: addressType}},
-  //     &shim.Column{Value: &shim.Column_String_{String_: doorNumber}},
-  //     &shim.Column{Value: &shim.Column_String_{String_: street}},
-  //     &shim.Column{Value: &shim.Column_String_{String_: locality}},
-	// 		&shim.Column{Value: &shim.Column_String_{String_: city}},
-  //     &shim.Column{Value: &shim.Column_String_{String_: state}},
-  //     &shim.Column{Value: &shim.Column_String_{String_: pincode}},
-  //     &shim.Column{Value: &shim.Column_String_{String_: poaType}},
-  //     &shim.Column{Value: &shim.Column_String_{String_: poaDoc}},
-  //     &shim.Column{Value: &shim.Column_String_{String_: expiryDate}},
-  //     &shim.Column{Value: &shim.Column_String_{String_: source}},
-	// 	},
-	// })
+  addressId := args[1]
+  addressType := args[2]
+  doorNumber := args[3]
+  street := args[4]
+  locality := args[5]
+  city := args[6]
+  state := args[7]
+  pincode := args[8]
+  poaType := args[9]
+  poaDoc := args[10]
+  expiryDate := args[11]
+  source := args[12]
 
+	ok, err := stub.ReplaceRow("Address", shim.Row{
+		Columns: []*shim.Column{
+      &shim.Column{Value: &shim.Column_String_{String_: customerId}},
+      &shim.Column{Value: &shim.Column_String_{String_: addressId}},
+      &shim.Column{Value: &shim.Column_String_{String_: addressType}},
+      &shim.Column{Value: &shim.Column_String_{String_: doorNumber}},
+      &shim.Column{Value: &shim.Column_String_{String_: street}},
+      &shim.Column{Value: &shim.Column_String_{String_: locality}},
+			&shim.Column{Value: &shim.Column_String_{String_: city}},
+      &shim.Column{Value: &shim.Column_String_{String_: state}},
+      &shim.Column{Value: &shim.Column_String_{String_: pincode}},
+      &shim.Column{Value: &shim.Column_String_{String_: poaType}},
+      &shim.Column{Value: &shim.Column_String_{String_: poaDoc}},
+      &shim.Column{Value: &shim.Column_String_{String_: expiryDate}},
+      &shim.Column{Value: &shim.Column_String_{String_: source}},
+		},
+	})
 
-	var columns []shim.Column
-	col1 := shim.Column{Value: &shim.Column_String_{String_: customerId}}
-	columns = append(columns, col1)
-
-stub.DeleteRow("Address", columns)
-
-// ok, err := stub.InsertRow("Address", shim.Row{
-// 	Columns: []*shim.Column{
-// 		&shim.Column{Value: &shim.Column_String_{String_: customerId}},
-// 		&shim.Column{Value: &shim.Column_String_{String_: addressId}},
-// 		&shim.Column{Value: &shim.Column_String_{String_: addressType}},
-// 		&shim.Column{Value: &shim.Column_String_{String_: doorNumber}},
-// 		&shim.Column{Value: &shim.Column_String_{String_: street}},
-// 		&shim.Column{Value: &shim.Column_String_{String_: locality}},
-// 		&shim.Column{Value: &shim.Column_String_{String_: city}},
-// 		&shim.Column{Value: &shim.Column_String_{String_: state}},
-// 		&shim.Column{Value: &shim.Column_String_{String_: pincode}},
-// 		&shim.Column{Value: &shim.Column_String_{String_: poaType}},
-// 		&shim.Column{Value: &shim.Column_String_{String_: poaDoc}},
-// 		&shim.Column{Value: &shim.Column_String_{String_: expiryDate}},
-// 		&shim.Column{Value: &shim.Column_String_{String_: source}},
-// 	},
-// })
-
-	// if !ok && err == nil {
-	// 	return nil, errors.New("Error in updated customer address record.")
-	// }
+	if !ok && err == nil {
+		return nil, errors.New("Error in updated customer address record.")
+	}
 	// myLogger.Debug("Congratulations !!! Successfully updated ",)
-	return nil, nil
+	return nil, err
 }
 
 /*
