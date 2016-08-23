@@ -389,6 +389,7 @@ func UpdateAddress(stub *shim.ChaincodeStub, args []string) ([]byte, error) {
 	// 	},
 	// })
 
+
 	var columns []shim.Column
 	col1 := shim.Column{Value: &shim.Column_String_{String_: customerId}}
 	columns = append(columns, col1)
