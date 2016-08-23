@@ -358,18 +358,18 @@ func UpdateAddress(stub *shim.ChaincodeStub, args []string) ([]byte, error) {
 	}
 
   customerId := args[0]
-  addressId := args[1]
-  addressType := args[2]
-  doorNumber := args[3]
-  street := args[4]
-  locality := args[5]
-  city := args[6]
-  state := args[7]
-  pincode := args[8]
-  poaType := args[9]
-  poaDoc := args[10]
-  expiryDate := args[11]
-  source := args[12]
+  // addressId := args[1]
+  // addressType := args[2]
+  // doorNumber := args[3]
+  // street := args[4]
+  // locality := args[5]
+  // city := args[6]
+  // state := args[7]
+  // pincode := args[8]
+  // poaType := args[9]
+  // poaDoc := args[10]
+  // expiryDate := args[11]
+  // source := args[12]
   //  stub.
 	// ok, err := stub.ReplaceRow("Address", shim.Row{
 	// 	Columns: []*shim.Column{
@@ -414,11 +414,11 @@ stub.DeleteRow("Address", columns)
 // 	},
 // })
 
-	if !ok && err == nil {
-		return nil, errors.New("Error in updated customer address record.")
-	}
+	// if !ok && err == nil {
+	// 	return nil, errors.New("Error in updated customer address record.")
+	// }
 	// myLogger.Debug("Congratulations !!! Successfully updated ",)
-	return nil, err
+	return nil, nil
 }
 
 /*
