@@ -371,23 +371,42 @@ func UpdateAddress(stub *shim.ChaincodeStub, args []string) ([]byte, error) {
   expiryDate := args[11]
   source := args[12]
 
-	ok, err := stub.ReplaceRow("Address", shim.Row{
-		Columns: []*shim.Column{
-      &shim.Column{Value: &shim.Column_String_{String_: customerId}},
-      &shim.Column{Value: &shim.Column_String_{String_: addressId}},
-      &shim.Column{Value: &shim.Column_String_{String_: addressType}},
-      &shim.Column{Value: &shim.Column_String_{String_: doorNumber}},
-      &shim.Column{Value: &shim.Column_String_{String_: street}},
-      &shim.Column{Value: &shim.Column_String_{String_: locality}},
-			&shim.Column{Value: &shim.Column_String_{String_: city}},
-      &shim.Column{Value: &shim.Column_String_{String_: state}},
-      &shim.Column{Value: &shim.Column_String_{String_: pincode}},
-      &shim.Column{Value: &shim.Column_String_{String_: poaType}},
-      &shim.Column{Value: &shim.Column_String_{String_: poaDoc}},
-      &shim.Column{Value: &shim.Column_String_{String_: expiryDate}},
-      &shim.Column{Value: &shim.Column_String_{String_: source}},
-		},
-	})
+	ok, err := stub.DeleteRow("Address", shim.Row{
+	Columns: []*shim.Column{
+		&shim.Column{Value: &shim.Column_String_{String_: customerId}},
+		&shim.Column{Value: &shim.Column_String_{String_: addressId}},
+		&shim.Column{Value: &shim.Column_String_{String_: addressType}},
+		&shim.Column{Value: &shim.Column_String_{String_: doorNumber}},
+		&shim.Column{Value: &shim.Column_String_{String_: street}},
+		&shim.Column{Value: &shim.Column_String_{String_: locality}},
+		&shim.Column{Value: &shim.Column_String_{String_: city}},
+		&shim.Column{Value: &shim.Column_String_{String_: state}},
+		&shim.Column{Value: &shim.Column_String_{String_: pincode}},
+		&shim.Column{Value: &shim.Column_String_{String_: poaType}},
+		&shim.Column{Value: &shim.Column_String_{String_: poaDoc}},
+		&shim.Column{Value: &shim.Column_String_{String_: expiryDate}},
+		&shim.Column{Value: &shim.Column_String_{String_: source}},
+	},
+})
+
+ok, err = stub.InsertRow("Address", shim.Row{
+	Columns: []*shim.Column{
+		&shim.Column{Value: &shim.Column_String_{String_: customerId}},
+		&shim.Column{Value: &shim.Column_String_{String_: addressId}},
+		&shim.Column{Value: &shim.Column_String_{String_: addressType}},
+		&shim.Column{Value: &shim.Column_String_{String_: doorNumber}},
+		&shim.Column{Value: &shim.Column_String_{String_: street}},
+		&shim.Column{Value: &shim.Column_String_{String_: locality}},
+		&shim.Column{Value: &shim.Column_String_{String_: city}},
+		&shim.Column{Value: &shim.Column_String_{String_: state}},
+		&shim.Column{Value: &shim.Column_String_{String_: pincode}},
+		&shim.Column{Value: &shim.Column_String_{String_: poaType}},
+		&shim.Column{Value: &shim.Column_String_{String_: poaDoc}},
+		&shim.Column{Value: &shim.Column_String_{String_: expiryDate}},
+		&shim.Column{Value: &shim.Column_String_{String_: source}},
+	},
+})
+
 
 	if !ok && err == nil {
 		return nil, errors.New("Error in updated customer address record.")
