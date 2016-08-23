@@ -370,7 +370,7 @@ func UpdateAddress(stub *shim.ChaincodeStub, args []string) ([]byte, error) {
   poaDoc := args[10]
   expiryDate := args[11]
   source := args[12]
-   stub.
+  //  stub.
 	// ok, err := stub.ReplaceRow("Address", shim.Row{
 	// 	Columns: []*shim.Column{
   //     &shim.Column{Value: &shim.Column_String_{String_: customerId}},
